@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD de Usuários e Carros</title>
+    <link rel="stylesheet" href="/assets/css/main.css" />
+  </head>
+  <body>
+    <main>
+      <header class="hero">
+        <h1>CRUD de Usuários e Carros</h1>
+        <p>Aplicação simples usando NestJS, Drizzle e PostgreSQL.</p>
+      </header>
+
+      <section class="layout">
+        <article class="card">
+          <h2>Usuários</h2>
+
+          <div id="user-message" class="message"></div>
+
+          <form id="user-form">
+            <div>
+              <label for="name">Nome</label>
+              <input id="name" name="name" type="text" maxlength="100" required />
+            </div>
+
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" maxlength="100" />
+            </div>
+
+            <button id="user-submit-button" class="primary" type="submit">Salvar</button>
+            <button id="user-cancel-button" class="secondary" type="button">Cancelar</button>
+          </form>
+
+          <h3>Usuários cadastrados</h3>
+
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="users-table-body"></tbody>
+          </table>
+        </article>
+
+        <article class="card">
+          <h2>Carros</h2>
+
+          <div id="car-message" class="message"></div>
+
+          <form id="car-form">
+            <div>
+              <label for="car-user-id">Usuário</label>
+              <select id="car-user-id" name="idUser" required></select>
+            </div>
+
+            <div>
+              <label for="plate">Placa</label>
+              <input
+                id="plate"
+                name="plate"
+                type="text"
+                maxlength="7"
+                placeholder="AAA1A11"
+                required
+              />
+            </div>
+
+            <button id="car-submit-button" class="primary" type="submit">Salvar</button>
+            <button id="car-cancel-button" class="secondary" type="button">Cancelar</button>
+          </form>
+
+          <h3>Carros cadastrados</h3>
+
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Placa</th>
+                <th>ID Usuário</th>
+                <th>Usuário</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="cars-table-body"></tbody>
+          </table>
+        </article>
+      </section>
+    </main>
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>
