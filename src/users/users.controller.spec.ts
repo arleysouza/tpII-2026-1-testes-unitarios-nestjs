@@ -12,6 +12,7 @@ describe('UsersController', () => {
   };
 
   beforeEach(() => {
+    // O controller é testado isoladamente; o service real não participa aqui.
     usersService = {
       create: jest.fn(),
       findAll: jest.fn(),

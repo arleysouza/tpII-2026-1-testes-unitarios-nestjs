@@ -162,11 +162,11 @@ sequenceDiagram
   participant MockDB as DatabaseService Mock
 
   Jest->>Spec: executa o caso de teste
-  Spec->>Service: chama metodo testado
+  Spec->>Service: chama método testado
   Service->>MockDB: select/insert/update/delete
   MockDB-->>Service: devolve dados simulados ou erro
-  Service-->>Spec: retorna valor ou lanca excecao
-  Spec-->>Jest: realiza assercoes
+  Service-->>Spec: retorna valor ou lanca exceção
+  Spec-->>Jest: realiza asserções
 ```
 
 ## Casos cobertos atualmente
@@ -239,7 +239,7 @@ Como o objetivo é unitário, esta suíte não cobre:
 - `ValidationPipe` rodando dentro do ciclo HTTP real;
 - bootstrap completo do `AppModule`.
 
-Esses cenários seriam responsabilidade de testes de integração ou testes `e2e`.
+Esses cenários seriam responsabilidade de testes de integração ou testes `e2e` (end-2-end).
 
 ## Infraestrutura mínima da aplicação
 

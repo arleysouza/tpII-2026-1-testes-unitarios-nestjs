@@ -2,6 +2,7 @@ import { NotFoundException } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 import { CarsService } from './cars.service';
 
+// Simula a API encadeável usada pelo Drizzle nas consultas de leitura.
 function createSelectChain<T>(result: T) {
   return {
     from: jest.fn().mockReturnThis(),
@@ -12,6 +13,7 @@ function createSelectChain<T>(result: T) {
   };
 }
 
+// Simula insert(...).values(...).returning().
 function createInsertChain<T>(result: T) {
   const returning = jest.fn().mockResolvedValue(result);
   const values = jest.fn().mockReturnValue({ returning });
@@ -23,6 +25,7 @@ function createInsertChain<T>(result: T) {
   };
 }
 
+// Simula update(...).set(...).where().
 function createUpdateChain() {
   const where = jest.fn().mockResolvedValue(undefined);
   const set = jest.fn().mockReturnValue({ where });
@@ -34,6 +37,7 @@ function createUpdateChain() {
   };
 }
 
+// Simula delete(...).where(...).returning().
 function createDeleteChain<T>(result: T) {
   const returning = jest.fn().mockResolvedValue(result);
   const where = jest.fn().mockReturnValue({ returning });
@@ -55,6 +59,7 @@ describe('CarsService', () => {
   };
 
   beforeEach(() => {
+    // O service é exercitado sem PostgreSQL real; toda a camada de banco é mockada.
     db = {
       select: jest.fn(),
       insert: jest.fn(),

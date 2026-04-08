@@ -3,6 +3,7 @@ import { DatabaseError } from 'pg';
 import { DatabaseService } from '../database/database.service';
 import { UsersService } from './users.service';
 
+// Simula a API encadeável usada pelo Drizzle nas consultas de leitura.
 function createSelectChain<T>(result: T) {
   return {
     from: jest.fn().mockReturnThis(),
@@ -13,6 +14,7 @@ function createSelectChain<T>(result: T) {
   };
 }
 
+// Simula insert(...).values(...).returning().
 function createInsertChain<T>(result: T, error?: unknown) {
   const returning = error
     ? jest.fn().mockRejectedValue(error)
@@ -26,6 +28,7 @@ function createInsertChain<T>(result: T, error?: unknown) {
   };
 }
 
+// Simula update(...).set(...).where(...).returning().
 function createUpdateChain<T>(result: T, error?: unknown) {
   const returning = error
     ? jest.fn().mockRejectedValue(error)
@@ -41,6 +44,7 @@ function createUpdateChain<T>(result: T, error?: unknown) {
   };
 }
 
+// Simula delete(...).where(...).returning().
 function createDeleteChain<T>(result: T, error?: unknown) {
   const returning = error
     ? jest.fn().mockRejectedValue(error)
@@ -54,6 +58,7 @@ function createDeleteChain<T>(result: T, error?: unknown) {
   };
 }
 
+// Permite reproduzir os códigos de erro tratados pelo service.
 function createDatabaseError(code: string, message: string) {
   const error = new DatabaseError(message, 0, 'error');
   error.code = code;
@@ -70,6 +75,7 @@ describe('UsersService', () => {
   };
 
   beforeEach(() => {
+    // Cada teste recebe um "banco" novo para evitar acoplamento entre casos.
     db = {
       select: jest.fn(),
       insert: jest.fn(),

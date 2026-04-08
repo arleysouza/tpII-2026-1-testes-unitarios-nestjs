@@ -12,6 +12,7 @@ describe('CarsController', () => {
   };
 
   beforeEach(() => {
+    // Aqui o interesse é validar delegação, não regra de negócio do service.
     carsService = {
       create: jest.fn(),
       findAll: jest.fn(),

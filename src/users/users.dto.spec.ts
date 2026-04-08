@@ -3,12 +3,14 @@ import { validate, ValidationError } from 'class-validator';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
+// Extrai apenas as mensagens para deixar as asserções mais legíveis.
 function getMessages(errors: ValidationError[]) {
   return errors.flatMap((error) => Object.values(error.constraints ?? {}));
 }
 
 describe('Users DTOs', () => {
   it('aceita e-mail vazio na criação', async () => {
+    // O DTO permite string vazia para que o service trate esse valor depois.
     const dto = plainToInstance(CreateUserDto, {
       name: 'Maria',
       email: '',
@@ -31,6 +33,7 @@ describe('Users DTOs', () => {
   });
 
   it('aceita atualização parcial com e-mail nulo', async () => {
+    // Como o campo é opcional, null não deve disparar erro de formato.
     const dto = plainToInstance(UpdateUserDto, {
       email: null,
     });
