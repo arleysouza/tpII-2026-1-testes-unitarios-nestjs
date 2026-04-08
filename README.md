@@ -205,6 +205,32 @@ npm install
 npm test
 ```
 
+### Executar apenas as suítes do módulo `users`
+
+```bash
+npm run test:users
+```
+
+### Executar apenas as suítes do módulo `cars`
+
+```bash
+npm run test:cars
+```
+
+### Executar uma única suíte
+
+Use o script `test:file` seguido do caminho do arquivo de teste:
+
+```bash
+npm run test:file -- src/users/users.service.spec.ts
+```
+
+Outro exemplo:
+
+```bash
+npm run test:file -- src/cars/cars.dto.spec.ts
+```
+
 ### Executar em modo watch
 
 ```bash
@@ -275,7 +301,7 @@ CREATE TABLE cars (
 Crie um arquivo `.env` na raiz:
 
 ```env
-PORT=3000
+PORT=3003
 
 DB_HOST=localhost
 DB_PORT=5432

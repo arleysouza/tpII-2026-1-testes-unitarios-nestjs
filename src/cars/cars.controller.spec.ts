@@ -24,7 +24,7 @@ describe('CarsController', () => {
     controller = new CarsController(carsService as unknown as CarsService);
   });
 
-  it('delegates create to the service', async () => {
+  it('delega a criação ao service', async () => {
     const dto = { idUser: 1, plate: 'ABC1D23' };
     const response = { idCar: 1, ...dto, userName: 'Maria' };
     carsService.create.mockResolvedValue(response);
@@ -33,7 +33,7 @@ describe('CarsController', () => {
     expect(carsService.create).toHaveBeenCalledWith(dto);
   });
 
-  it('delegates findAll to the service', async () => {
+  it('delega a listagem ao service', async () => {
     const response = [{ idCar: 1, idUser: 1, plate: 'ABC1D23', userName: 'Maria' }];
     carsService.findAll.mockResolvedValue(response);
 
@@ -41,7 +41,7 @@ describe('CarsController', () => {
     expect(carsService.findAll).toHaveBeenCalled();
   });
 
-  it('delegates findOne to the service', async () => {
+  it('delega a busca por id ao service', async () => {
     const response = { idCar: 1, idUser: 1, plate: 'ABC1D23', userName: 'Maria' };
     carsService.findOne.mockResolvedValue(response);
 
@@ -49,7 +49,7 @@ describe('CarsController', () => {
     expect(carsService.findOne).toHaveBeenCalledWith(1);
   });
 
-  it('delegates update to the service', async () => {
+  it('delega a atualização ao service', async () => {
     const dto = { plate: 'BBB2B22' };
     const response = { idCar: 1, idUser: 1, plate: 'BBB2B22', userName: 'Maria' };
     carsService.update.mockResolvedValue(response);
@@ -58,7 +58,7 @@ describe('CarsController', () => {
     expect(carsService.update).toHaveBeenCalledWith(1, dto);
   });
 
-  it('delegates remove to the service', async () => {
+  it('delega a remoção ao service', async () => {
     const response = { message: 'Carro removido com sucesso.' };
     carsService.remove.mockResolvedValue(response);
 

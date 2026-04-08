@@ -24,7 +24,7 @@ describe('UsersController', () => {
     controller = new UsersController(usersService as unknown as UsersService);
   });
 
-  it('delegates create to the service', async () => {
+  it('delega a criação ao service', async () => {
     const dto = { name: 'Maria', email: 'maria@example.com' };
     const response = { idUser: 1, ...dto };
     usersService.create.mockResolvedValue(response);
@@ -33,7 +33,7 @@ describe('UsersController', () => {
     expect(usersService.create).toHaveBeenCalledWith(dto);
   });
 
-  it('delegates findAll to the service', async () => {
+  it('delega a listagem ao service', async () => {
     const response = [{ idUser: 1, name: 'Maria', email: null }];
     usersService.findAll.mockResolvedValue(response);
 
@@ -41,7 +41,7 @@ describe('UsersController', () => {
     expect(usersService.findAll).toHaveBeenCalled();
   });
 
-  it('delegates findOne to the service', async () => {
+  it('delega a busca por id ao service', async () => {
     const response = { idUser: 1, name: 'Maria', email: null };
     usersService.findOne.mockResolvedValue(response);
 
@@ -49,7 +49,7 @@ describe('UsersController', () => {
     expect(usersService.findOne).toHaveBeenCalledWith(1);
   });
 
-  it('delegates update to the service', async () => {
+  it('delega a atualização ao service', async () => {
     const dto = { email: 'novo@example.com' };
     const response = { idUser: 1, name: 'Maria', email: 'novo@example.com' };
     usersService.update.mockResolvedValue(response);
@@ -58,7 +58,7 @@ describe('UsersController', () => {
     expect(usersService.update).toHaveBeenCalledWith(1, dto);
   });
 
-  it('delegates remove to the service', async () => {
+  it('delega a remoção ao service', async () => {
     const response = { message: 'Usuário removido com sucesso.' };
     usersService.remove.mockResolvedValue(response);
 

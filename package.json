@@ -9,6 +9,9 @@
     "dev": "nest start --watch",
     "start:prod": "node dist/main",
     "test": "jest",
+    "test:file": "jest --runInBand",
+    "test:users": "jest --runInBand src/users",
+    "test:cars": "jest --runInBand src/cars",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage"
   },
